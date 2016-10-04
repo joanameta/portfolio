@@ -1,0 +1,87 @@
+#contact {
+  background: #7beec7;
+  border-bottom: 2px solid #ebebeb; }
+  #contact .row {
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-pack: center;
+    -webkit-box-pack: center;
+    justify-content: center; }
+    #contact .row .box {
+      -ms-flex-preferred-size: 40%;
+      flex-basis: 40%; }
+  #contact h1, #contact h3, #contact p, #contact a {
+    color: #fff; }
+  #contact a {
+    display: block;
+    line-height: 2; }
+  #contact p {
+    font-weight: bold; }
+  #contact .alert-hidden {
+    opacity: 0;
+    visibility: hidden; }
+  #contact .alert {
+    margin-top: 30px;
+    background: #fff;
+    height: auto;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s; }
+    #contact .alert.visible {
+      opacity: 1;
+      visibility: visible;
+      -webkit-transition-duration: 0.3s;
+      transition-duration: 0.3s; }
+    #contact .alert p {
+      padding: 10px 15px;
+      color: #CC0000;
+      font-weight: 400; }
+      #contact .alert p.succes {
+        display: inline;
+        color: #60606e;
+        font-weight: 700; }
+    #contact .alert img {
+      display: inline;
+      padding-left: 5px; }
+  #contact .valid {
+    border: 0px;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s; }
+  #contact .inValid {
+    border: 1px solid #CC0000;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s; }
+  #contact form {
+    background: #fff;
+    padding: 15px;
+    overflow: hidden; }
+    #contact form p small {
+      text-align: right;
+      font-size: 10px;
+      color: #212121; }
+    #contact form h3 span {
+      color: #212121; }
+  #contact i {
+    color: #fff; }
+
+footer .row {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex; }
+  footer .row .box {
+    -ms-flex-preferred-size: 50%;
+    flex-basis: 50%; }
+
+footer p {
+  line-height: 100px;
+  text-align: left; }
+
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  height: 5px;
+  background: #7beec7;
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s; }
