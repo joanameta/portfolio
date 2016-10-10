@@ -17,8 +17,8 @@ hamburger.onclick = hamburgerMenu;
 var slides = [];
 
 	for (i = 1; i < 4; i++){
-		var pobierz = document.querySelector("#slide" + i);
-		slides.push(pobierz);
+		var slideTab = document.querySelector("#slide" + i);
+		slides.push(slideTab);
 	}
 
 var currentSlide = 0;
@@ -53,26 +53,26 @@ window.addEventListener('scroll', function(){
 
 
 // Skill slider
-var tab2 = [];
+var skillTab = [];
 
 	for (a = 1; a < 4; a++){
 		var sslider = document.querySelector("#sk" + a);
-		tab2.push(sslider);
+		skillTab.push(sslider);
 	}
 
-var currentSlide2 = 0;
+var skillSlide = 0;
 function nextSlide() {
-    goToSlide(currentSlide2+1);
+    goToSlide(skillSlide+1);
 }
 
 function previousSlide() {
-    goToSlide(currentSlide2-1);
+    goToSlide(skillSlide-1);
 }
 
 function goToSlide(n) {
-    tab2[currentSlide2].className = 'inactive-slide';
-    currentSlide2 = (n+tab2.length)%tab2.length;
-    tab2[currentSlide2].className = 'active-slide';
+    skillTab[skillSlide].className = 'inactive-slide';
+    skillSlide = (n+skillTab.length)%skillTab.length;
+    skillTab[skillSlide].className = 'active-slide';
 }
 
 var next = document.getElementById('next');
@@ -89,23 +89,22 @@ previous.onclick = function() {
 
 
 // active tab
-// nadawanie tych samych klas i id li'kom oraz divom z projektami
-linki = document.querySelectorAll('.project-list li a');
-projekty = document.querySelectorAll('.screens div');
-for (i=0; i < linki.length; i++) {
-	linki[i].classList.add("projectasa" + i);
-	projekty[i].setAttribute('id', 'projectasa' + i);
+projectList = document.querySelectorAll('.project-list li a');
+projects = document.querySelectorAll('.screens div');
+for (i=0; i < projectList.length; i++) {
+	projectList[i].classList.add("projectasa" + i);
+	projects[i].setAttribute('id', 'projectasa' + i);
 
-	linki[i].onmouseover = function() {
-		var aktywnylink = this.className.toString();
-		aktywnylink = aktywnylink.charAt(aktywnylink.length - 1);
-		var liczba = parseInt(aktywnylink);
+	projectList[i].onmouseover = function() {
+		var activeLink = this.className.toString();
+		activeLink = activeLink.charAt(activeLink.length - 1);
+		var liczba = parseInt(activeLink);
 
-		for (k=0; k < projekty.length; k++) {
-			projekty[k].classList.remove("active-tab");
+		for (k=0; k < projects.length; k++) {
+			projects[k].classList.remove("active-tab");
 		}
 
-		projekty[liczba].classList.add("active-tab");
+		projects[liczba].classList.add("active-tab");
 	}
 }
 // active tab
@@ -144,8 +143,6 @@ document.querySelector('#submit').onclick = function () {
 	var regName = /^[\D]{3,}\s+[\D]{3,}$/;
 	var regMail = /^[0-9a-zA-Z_.-]+@[0-9a-zA-Z.-]+\.[a-zA-Z]{2,3}$/;
 
-	for (var i = 0; i < input.length; i++) {
-
 		if (!regName.test(name.value)) {
 				name.className = 'inValid';
 				error.className = 'alert visible';
@@ -172,7 +169,7 @@ document.querySelector('#submit').onclick = function () {
 					error.innerHTML = "<p>Wprowadź wiadomość</p>";
 					return false;
 				} else {
-					sprawdzFormularz();
+					checkForm();
 					error.className = 'alert';
 					message.className = '';
 					error.className = 'alert visible';
@@ -180,7 +177,6 @@ document.querySelector('#submit').onclick = function () {
 					return true;
 				}
 	}
-}
 // validate
 
 
@@ -200,26 +196,25 @@ window.addEventListener('input', function(){
 
 
 // validate php
-function sprawdzFormularz() {
-	var zadanie = "";
-	zadanie = new XMLHttpRequest();
+function checkForm() {
+	var ajax = "";
+	ajax = new XMLHttpRequest();
 	var poleName = document.getElementById('name').value;
 	var poleMail = document.getElementById('email').value;
 	var poleMsg = document.getElementById('message').value;
 	var url = "form.php";
 
-	zadanie.open("POST", url, true);
-	zadanie.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	ajax.open("POST", url, true);
+	ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-	zadanie.onload = function(event){
-		console.log(zadanie.response);
-		var wynik = document.querySelector(".alert");
-		wynik.className = 'alert visible';
-		wynik.innerHTML = zadanie.responseText;
+	ajax.onload = function(event){
+		var result = document.querySelector(".alert");
+		result.className = 'alert visible';
+		result.innerHTML = ajax.responseText;
 	};
-	zadanie.onerror = function() {
+	ajax.onerror = function() {
   		console.log('There was an error!');
 	};
-	zadanie.send('&name=' + poleName + '&email=' + poleMail + poleMsg);
+	ajax.send('&name=' + poleName + '&email=' + poleMail + '&message=' + poleMsg + "&g-recaptcha-response=" + grecaptcha.getResponse());
 }
 // validate php

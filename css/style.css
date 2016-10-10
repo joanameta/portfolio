@@ -507,7 +507,8 @@ header #hamburger {
     color: #fff; }
   #contact a {
     display: block;
-    line-height: 2; }
+    line-height: 2;
+    font-weight: 700; }
   #contact p {
     font-weight: bold; }
   #contact .alert-hidden {
