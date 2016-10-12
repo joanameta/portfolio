@@ -1,5 +1,6 @@
 // Hamburger Menu
-function hamburgerMenu() {
+(function() {
+var hamburgerMenu = function() {
 	var hamburger = document.getElementById('top-menu');
 
 	if (hamburger.className === 'hide-menu') {
@@ -10,10 +11,13 @@ function hamburgerMenu() {
 }
 
 hamburger.onclick = hamburgerMenu;
+})();
 // Hamburger Menu
 
 
+
 // Mini slider
+(function() {
 var slides = [];
 
 	for (i = 1; i < 4; i++){
@@ -22,23 +26,25 @@ var slides = [];
 	}
 
 var currentSlide = 0;
-function changeSlide() {
+var changeSlide = function() {
 		slides[currentSlide].className = 'inactive-slide';
     currentSlide = (currentSlide+1)%slides.length;
     slides[currentSlide].className = 'active-slide';
 }
 
 setInterval(changeSlide, 6000);
+})();
 // Mini slider koniec
 
 
 
 // Parallax
+(function() {
 var parallaximg = document.querySelector("#about-me img");
 var scrollheight = document.body.scrollHeight;
 var windowheight = window.innerHeight;
 
-function parallax(){
+var parallax = function(){
 	if (window.innerWidth > 760) {
 		var scrolltop = window.pageYOffset ;
  		var scrollamount = (scrolltop / (scrollheight-windowheight)) * 100;
@@ -49,27 +55,30 @@ function parallax(){
 window.addEventListener('scroll', function(){
  requestAnimationFrame(parallax);
 }, false);
+})();
 // Parallax
 
 
+
 // Skill slider
+(function() {
 var skillTab = [];
 
-	for (a = 1; a < 4; a++){
-		var sslider = document.querySelector("#sk" + a);
-		skillTab.push(sslider);
-	}
+for (a = 1; a < 4; a++){
+	var sslider = document.querySelector("#sk" + a);
+	skillTab.push(sslider);
+}
 
 var skillSlide = 0;
-function nextSlide() {
+var nextSlide = function() {
     goToSlide(skillSlide+1);
 }
 
-function previousSlide() {
+var previousSlide = function() {
     goToSlide(skillSlide-1);
 }
 
-function goToSlide(n) {
+var goToSlide = function(n) {
     skillTab[skillSlide].className = 'inactive-slide';
     skillSlide = (n+skillTab.length)%skillTab.length;
     skillTab[skillSlide].className = 'active-slide';
@@ -84,13 +93,16 @@ next.onclick = function() {
 previous.onclick = function() {
     previousSlide();
 };
+})();
 // Skill slider
 
 
 
 // active tab
+(function() {
 projectList = document.querySelectorAll('.project-list li a');
 projects = document.querySelectorAll('.screens div');
+
 for (i=0; i < projectList.length; i++) {
 	projectList[i].classList.add("projectasa" + i);
 	projects[i].setAttribute('id', 'projectasa' + i);
@@ -107,12 +119,18 @@ for (i=0; i < projectList.length; i++) {
 		projects[liczba].classList.add("active-tab");
 	}
 }
+})();
 // active tab
 
 
+
 // progress bar
+(function() {
 var position = document.querySelector("#hamburger");
-function progressbar(){
+var scrollheight = document.body.scrollHeight;
+var windowheight = window.innerHeight;
+
+var progressbar = function(){
 	if (window.innerWidth > 760) {
 		var scrolltop = window.pageYOffset ;
  		var scrollamount = (scrolltop / (scrollheight-windowheight)) * 100;
@@ -130,10 +148,38 @@ function progressbar(){
 window.addEventListener('scroll', function(){
  requestAnimationFrame(progressbar);
 }, false);
+})();
 // progress bar
 
 
+
 // validate
+(function() {
+
+	// ajax
+	var checkForm = function(){
+		var ajax = "";
+		ajax = new XMLHttpRequest();
+		var poleName = document.getElementById('name').value;
+		var poleMail = document.getElementById('email').value;
+		var poleMsg = document.getElementById('message').value;
+		var url = "form.php";
+
+		ajax.open("POST", url, true);
+		ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+		ajax.onload = function(event){
+			var result = document.querySelector(".alert");
+			result.className = 'alert visible';
+			result.innerHTML = ajax.responseText;
+		};
+		ajax.onerror = function() {
+	  		console.log('There was an error!');
+		};
+		ajax.send('&name=' + poleName + '&email=' + poleMail + '&message=' + poleMsg + "&g-recaptcha-response=" + grecaptcha.getResponse());
+	}
+	// ajax
+
 document.querySelector('#submit').onclick = function () {
 	var input = document.querySelectorAll('input');
   var name = document.getElementById('name');
@@ -177,10 +223,13 @@ document.querySelector('#submit').onclick = function () {
 					return true;
 				}
 	}
+})();
 // validate
 
 
+
 // number of characters
+(function() {
 function messageValue() {
 	var entry = document.getElementById('message').value.length;
 	var limit = 300;
@@ -191,30 +240,5 @@ function messageValue() {
 window.addEventListener('input', function(){
  requestAnimationFrame(messageValue);
 }, false);
+})();
 // number of characters
-
-
-
-// validate php
-function checkForm() {
-	var ajax = "";
-	ajax = new XMLHttpRequest();
-	var poleName = document.getElementById('name').value;
-	var poleMail = document.getElementById('email').value;
-	var poleMsg = document.getElementById('message').value;
-	var url = "form.php";
-
-	ajax.open("POST", url, true);
-	ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-	ajax.onload = function(event){
-		var result = document.querySelector(".alert");
-		result.className = 'alert visible';
-		result.innerHTML = ajax.responseText;
-	};
-	ajax.onerror = function() {
-  		console.log('There was an error!');
-	};
-	ajax.send('&name=' + poleName + '&email=' + poleMail + '&message=' + poleMsg + "&g-recaptcha-response=" + grecaptcha.getResponse());
-}
-// validate php
