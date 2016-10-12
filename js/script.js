@@ -228,7 +228,7 @@ document.querySelector('#submit').onclick = function () {
 
 
 
-// number of characters
+// limit of characters
 (function() {
 function messageValue() {
 	var entry = document.getElementById('message').value.length;
@@ -241,4 +241,4 @@ window.addEventListener('input', function(){
  requestAnimationFrame(messageValue);
 }, false);
 })();
-// number of characters
+// limit of characters
