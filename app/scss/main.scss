@@ -1,0 +1,136 @@
+@import "variables.scss";
+
+body {
+	font-size:14px;
+	-webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    overflow-x: scroll;
+		overflow:hidden;
+}
+
+::-moz-selection {
+    	background:$accent-color;
+    	color:#fff;
+    }
+
+::selection {
+    	background:$accent-color;
+    	color:#fff;
+    }
+
+section {
+	padding:50px 0px;
+}
+
+a {
+	font-family: $main-font;
+	text-decoration:none;
+	color:#60606e;
+}
+
+h1 {
+	font-size:32px;
+	font-family: $main-font;
+	color:$text-color;
+	text-transform:uppercase;
+	font-weight:700;
+	margin-bottom:20px;
+}
+
+h3 {
+	font-size: 18px;
+	font-family: $main-font;
+	color:$text-color;
+	text-transform:uppercase;
+	margin-bottom: 20px;
+	font-weight:700;
+}
+
+p {
+	font-family: $second-font;
+	font-size:14px;
+	color:#60606e;
+	line-height:30px;
+}
+
+input, textarea {
+    width:92%;
+    display:block;
+    margin:10px 0px;
+    padding:10px 5px 10px 25px;
+    background:#fff;
+    border:1px solid #efefef;
+    resize: none;
+}
+
+input[type="button"] {
+		width:20%;
+		padding:10px 25px;
+    background:$accent-color;
+    color:#fff;
+}
+img {
+    max-width:100%;
+}
+
+i {
+    margin-bottom:10px;
+    padding-right:10px;
+    color: $accent-color;
+}
+
+button {
+    background-color: $accent-color;
+    color: #fff;
+    border:0;
+    border-radius: 0;
+    font-family: "Montserrat",sans-serif;
+    font-weight: 700;
+    height: 50px;
+    line-height: 50px;
+    min-width: 150px;
+    padding: 0;
+    text-align: center;
+    text-transform: uppercase;
+    -webkit-transition:all 0.2s ease-in-out 0s;
+    transition: all 0.2s ease-in-out 0s;
+}
+
+section {
+    h1 span{
+        position:relative;
+    }
+    h1 span::after {
+        background-color: $accent-color;
+        content: "";
+        height: 21px;
+        left: 0;
+        position: absolute;
+        top: 16px;
+        width: 70px;
+        z-index: -1;
+    }
+}
+
+.container {
+  max-width:1270px;
+  margin:0 auto;
+}
+
+.row {
+  display:-ms-flexbox;
+  display:-webkit-box;
+  display:flex;
+  -ms-flex-direction: row;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+          flex-direction: row;
+}
+
+.box {
+  box-sizing: border-box;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}

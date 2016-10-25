@@ -1,0 +1,332 @@
+@import "variables.scss";
+
+#mini-slider {
+    background: #fff url("../images/header-bg.jpg") no-repeat;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    z-index: -1;
+    .container {
+        display: -ms-flexbox;
+        display: -webkit-box;
+        display: flex;
+        -ms-flex-pack: center;
+            -webkit-box-pack: center;
+                justify-content: center;
+        min-height:750px;
+    }
+    .box {
+        margin-top:200px;
+        text-align:center;
+    }
+    .slides {
+        position:relative;
+        >div {
+            position:absolute;
+            right:0;
+            left:0;
+            margin:0 auto;
+        }
+    }
+
+    h1 {
+        border: 10px solid #60606e;
+        color: #60606e;
+        font-size: 48px;
+        margin-top:10px;
+        margin-bottom: 30px;
+        padding: 10px 40px;
+    }
+
+    span {
+        background-color: $accent-color;
+        color: #60606e;
+        padding: 8px 12px;
+        font-size: 18px;
+        font-family: $main-font;
+        color:$text-color;
+        text-transform:uppercase;
+        margin-bottom: 20px;
+    }
+    p {
+        font-size:16px;
+    }
+}
+
+.inactive-slide {
+    opacity:0;
+    -webkit-transition-duration:1s;
+            transition-duration:1s;
+}
+
+.active-slide {
+    opacity:1;
+    -webkit-transition-duration:1s;
+            transition-duration:1s;
+}
+
+#about-me {
+    margin-top:-344px;
+    position:relative;
+    img {
+        position:relative;
+    }
+    .box {
+        -ms-flex-preferred-size:50%;
+            flex-basis:50%;
+        }
+    button {
+        margin-top:35px;
+    }
+}
+
+#skills {
+    .row {
+        -ms-flex-pack:center;
+            -webkit-box-pack:center;
+                justify-content:center;
+        .box {
+            -ms-flex-preferred-size:50%;
+                flex-basis:50%;
+            text-align:left;
+        }
+        .header {
+          padding-bottom:40px;
+        }
+         .skill-slider {
+            position:relative;
+            overflow:hidden;
+            img {
+                position:absolute;
+                right:0;
+                left:0;
+                margin:0 auto;
+                padding-top:25px;
+            }
+            a {
+                font-size:40px;
+                font-weight:100;
+            }
+            #next {
+                 position:absolute;
+                 top:50%;
+                 right:25px;
+            }
+
+            #prev {
+                position:absolute;
+                top:50%;
+                left:25px;
+            }
+        }
+        .header {
+            text-align:center;
+        }
+    }
+
+    h3 {
+        display:inline;
+        text-align:left;
+    }
+    ul {
+        text-align:left;
+        margin-bottom:20px;
+        li {
+            font-family: "Open Sans",sans-serif;
+            color: #666666;
+            line-height: 30px;
+            text-transform: uppercase;
+            &:hover {
+              color:#212121;
+            }
+        }
+    }
+
+    .sprite {
+      display:inline-block;
+      width:20px;
+      height:20px;
+      margin-right:5px;
+      background:url('../images/sprite.png');
+      vertical-align: middle;
+    }
+    #html5 {
+      background-position:0 0;
+    }
+    #css {
+      background-position:140px 0px;
+    }
+    #rwd{
+      background-position:120px 0px;
+    }
+    #bs {
+      background-position:100px 0px;
+    }
+    #wp {
+      background-position:80px 0px;
+    }
+    #js{
+      background-position:60px 0px;
+    }
+    #jq{
+      background-position:40px 0px;
+    }
+    #sass{
+      background-position:20px 0px;
+    }
+    #ps{
+      background-position:0 20px;
+    }
+    #php {
+      background-position:140px 20px;
+    }
+    #mysql {
+      background-position:120px 20px;
+    }
+    #ajax {
+      background-position:100px 20px;
+    }
+    #gulp {
+      background-position:80px 20px;
+    }
+    #git {
+      background-position:60px 20px;
+    }
+    #linux {
+      background-position:40px 20px;
+    }
+    #ng {
+      background-position:20px 20px;
+    }
+}
+
+#portfolio {
+    .row {
+        -ms-flex-pack:center;
+            -webkit-box-pack:center;
+                justify-content:center;
+        .box {
+            -ms-flex-preferred-size:50%;
+                flex-basis:50%;
+            padding:30px 0px;
+            text-align:center;
+            &.entry {
+              -ms-flex-preferred-size:70%;
+              flex-basis:70%;
+            }
+        }
+    }
+    .project {
+        overflow:hidden;
+            .box:nth-child(1) {
+                -ms-flex-preferred-size:30%;
+                    flex-basis:30%;
+            }
+
+            li {
+                text-align:left;
+                padding:10px 15px;
+            }
+
+            .project-list a {
+                margin-left:10px;
+                padding:5px 20px;
+                background:#fff;
+                font-weight:700;
+                text-transform:uppercase;
+                -webkit-transition-duration:0.5s;
+                        transition-duration:0.5s;
+                &:hover {
+                    margin-left:0;
+                    padding:5px 20px;
+                    background:$accent-color;
+                    color:#fff;
+                }
+            }
+        }
+        .screens {
+            position:relative;
+            .project-content {
+                opacity:0;
+                visibility: hidden;
+                -webkit-transition-duration:0.3s;
+                        transition-duration:0.3s;
+                &::after {
+                  position:absolute;
+                  content: " ";
+                  width:0%;
+                  height:0%;
+                  left:0;
+                  right:0;
+                  margin:0 auto;
+                  background:none;
+                  -webkit-transition-duration:0.3s;
+                          transition-duration:0.3s;
+                }
+                h3 {
+                  opacity:0;
+                  visibility: hidden;
+                  position:absolute;
+                  top:45%;
+                  left:0;
+                  right:0;
+                  margin:0 auto;
+                  background:none;
+                  color:#fff;
+                  -webkit-transition-duration:0.3s;
+                          transition-duration:0.3s;
+                  z-index:1;
+                }
+                p {
+                  opacity:0;
+                  visibility: hidden;
+                  position:absolute;
+                  top:55%;
+                  left:0;
+                  right:0;
+                  margin:0 auto;
+                  background:none;
+                  color:#fff;
+                  -webkit-transition-duration:0.3s;
+                          transition-duration:0.3s;
+                  z-index:1;
+                }
+                img {
+                    position:absolute;
+                    left:0;
+                    right:0;
+                    margin:0 auto;
+                    border:1px solid #ebebeb;
+                    width:100%;
+                    height:auto;
+                    -webkit-filter: brightness(100%);
+                            filter: brightness(100%);
+                    -webkit-transition-duration:0.3s;
+                            transition-duration:0.3s;
+                }
+                &:hover {
+                  h3 {
+                    opacity:1;
+                    visibility: visible;
+                  }
+                  p {
+                    opacity:1;
+                    visibility: visible;
+                  }
+                  img {
+                    -webkit-filter: brightness(30%);
+                            filter: brightness(30%);
+
+                  }
+                }
+
+            }
+
+            .active-tab {
+                opacity:1;
+                visibility: visible;
+                -webkit-transition-duration:1s;
+                        transition-duration:1s;
+            }
+        }
+}
